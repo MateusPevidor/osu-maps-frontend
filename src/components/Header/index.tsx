@@ -5,8 +5,18 @@ import { FiSearch } from 'react-icons/fi';
 import { Container, Title, SearchBox } from './styles';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-const Header: React.FC = () => {
+import { useSearch } from '../../hooks/search';
+
+interface Props {
+  isFixed?: boolean;
+}
+
+const Header: React.FC<Props> = ({ isFixed }) => {
   const searchBoxRef = useRef<HTMLInputElement>(null);
+
+  const [searchBoxText, setSearchBoxText] = useState('');
+
+  const { setSearchText } = useSearch();
 
   const [isSearchBoxFocused, setIsSearchBoxFocused] = useState(false);
   const [isSearchBoxFilled, setIsSearchBoxFilled] = useState(false);
@@ -21,8 +31,16 @@ const Header: React.FC = () => {
     setIsSearchBoxFilled(!!searchBoxRef.current?.value);
   }, []);
 
+  const handleSearchBoxInput = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      setSearchBoxText(e.currentTarget.value);
+      setSearchText(e.currentTarget.value);
+    },
+    [setSearchText],
+  );
+
   return (
-    <Container>
+    <Container isFixed={isFixed}>
       <div>
         <Title>
           <Logo />
@@ -38,8 +56,10 @@ const Header: React.FC = () => {
             placeholder="Search"
             onFocus={handleSearchBoxFocus}
             onBlur={handleSearchBoxBlur}
+            onChange={handleSearchBoxInput}
             spellCheck={false}
             ref={searchBoxRef}
+            value={searchBoxText}
           />
         </SearchBox>
       </div>

@@ -8,7 +8,7 @@ export const CardsContainer = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  margin-top: 50px;
+  margin-top: 120px;
 `;
 
 export const Card = styled.div`
@@ -24,8 +24,6 @@ export const Card = styled.div`
 
   box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.7);
 
-  cursor: pointer;
-
   transition: 0.2s;
   &:hover {
     transform: translate(-2px, -2px);
@@ -40,6 +38,8 @@ export const CoverImage = styled.img`
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+
+  cursor: pointer;
 `;
 
 export const InfoContainer = styled.div`
@@ -80,5 +80,13 @@ export const InfoContainer = styled.div`
     margin-right: 12px;
     width: 28px;
     height: auto;
+
+    transition: 0.2s;
+
+    cursor: pointer;
+
+    &:hover {
+      color: #fd3f55;
+    }
   }
 `;

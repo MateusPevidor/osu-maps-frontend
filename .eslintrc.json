@@ -28,6 +28,10 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
+    "camelcase": "off",
+    "react/prop-types": "off",
+    "react/jsx-curly-newline": "off",
+    "default-case": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

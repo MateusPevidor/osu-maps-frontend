@@ -5,11 +5,24 @@ interface SeachBoxProps {
   isFilled: boolean;
 }
 
-export const Container = styled.div`
+interface HeaderProps {
+  isFixed?: boolean;
+}
+
+export const Container = styled.div<HeaderProps>`
   background-color: #0c0715;
   display: flex;
   justify-content: center;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+  ${props =>
+    props.isFixed &&
+    css`
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 3;
+    `}
 
   > div {
     width: 80%;
